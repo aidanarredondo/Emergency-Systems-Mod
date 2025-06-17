@@ -1,6 +1,7 @@
 package dev.aidanarredondo.emergency_systems.init;
 
 import dev.aidanarredondo.emergency_systems.EmergencySystemsMod;
+import dev.aidanarredondo.emergency_systems.blocks.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -14,9 +15,9 @@ public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(net.minecraft.core.registries.Registries.BLOCK, EmergencySystemsMod.MODID);
 
-    // Fire Alarm Blocks - Starting with simple blocks first
+    // Fire Alarm Blocks
     public static final Supplier<Block> RESIDENTIAL_FIRE_ALARM = BLOCKS.register("residential_fire_alarm",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new ResidentialFireAlarmBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.QUARTZ)
                     .strength(2.0f)
                     .sound(SoundType.METAL)));
@@ -40,7 +41,7 @@ public class ModBlocks {
                     .sound(SoundType.METAL)));
 
     public static final Supplier<Block> FIRE_ALARM_CONTROL_PANEL = BLOCKS.register("fire_alarm_control_panel",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new FireAlarmControlPanelBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.METAL)
                     .strength(4.0f)
                     .sound(SoundType.METAL)));
@@ -59,7 +60,7 @@ public class ModBlocks {
                     .sound(SoundType.METAL)));
 
     public static final Supplier<Block> TORNADO_SIREN_CONTROL_PANEL = BLOCKS.register("tornado_siren_control_panel",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new TornadoSirenControlPanelBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.METAL)
                     .strength(4.0f)
                     .sound(SoundType.METAL)));

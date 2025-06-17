@@ -1,0 +1,35 @@
+{
+  "itemGroup.emergency_systems.emergency_systems": "Emergency Systems",
+  "itemGroup.emergency_systems.example": "Example Tab",
+
+  "item.emergency_systems.residential_fire_alarm": "Residential Fire Alarm",
+  "item.emergency_systems.commercial_fire_alarm_ceiling": "Commercial Fire Alarm (Ceiling)",
+  "item.emergency_systems.commercial_fire_alarm_wall": "Commercial Fire Alarm (Wall)",
+  "item.emergency_systems.fire_alarm_pull_station": "Fire Alarm Pull Station",
+  "item.emergency_systems.fire_alarm_control_panel": "Fire Alarm Control Panel",
+  "item.emergency_systems.residential_fire_panel": "Residential Fire Panel",
+  "item.emergency_systems.tornado_siren": "Tornado Siren",
+  "item.emergency_systems.tornado_siren_control_panel": "Tornado Siren Control Panel",
+  "item.emergency_systems.device_linking_tool": "Device Linking Tool",
+  "item.emergency_systems.government_key": "Government Key",
+
+  "item.emergency_systems.electronic_circuit": "Electronic Circuit",
+  "item.emergency_systems.speaker_component": "Speaker Component",
+  "item.emergency_systems.smoke_detector_sensor": "Smoke Detector Sensor",
+  "item.emergency_systems.alarm_horn": "Alarm Horn",
+  "item.emergency_systems.control_board": "Control Board",
+  "item.emergency_systems.plastic_casing": "Plastic Casing",
+  "item.emergency_systems.metal_housing": "Metal Housing",
+
+  "item.emergency_systems.example_item": "Example Item",
+
+  "block.emergency_systems.residential_fire_alarm": "Residential Fire Alarm",
+  "block.emergency_systems.commercial_fire_alarm_ceiling": "Commercial Fire Alarm (Ceiling)",
+  "block.emergency_systems.commercial_fire_alarm_wall": "Commercial Fire Alarm (Wall)",
+  "block.emergency_systems.fire_alarm_pull_station": "Fire Alarm Pull Station",
+  "block.emergency_systems.fire_alarm_control_panel": "Fire Alarm Control Panel",
+  "block.emergency_systems.residential_fire_panel": "Residential Fire Panel",
+  "block.emergency_systems.tornado_siren": "Tornado Siren",
+  "block.emergency_systems.tornado_siren_control_panel": "Tornado Siren Control Panel",
+  "block.emergency_systems.example_block": "Example Block"
+}

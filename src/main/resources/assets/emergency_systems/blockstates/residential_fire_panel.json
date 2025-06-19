@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "emergency_systems:block/residential_fire_panel"
+    }
+  }
+}

@@ -20,50 +20,61 @@ public class ModBlocks {
             () -> new ResidentialFireAlarmBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.QUARTZ)
                     .strength(2.0f)
-                    .sound(SoundType.METAL)));
+                    .sound(SoundType.METAL)
+                    .noOcclusion()
+                    .requiresCorrectToolForDrops()));
 
     public static final Supplier<Block> COMMERCIAL_FIRE_ALARM_CEILING = BLOCKS.register("commercial_fire_alarm_ceiling",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new CommercialFireAlarmCeilingBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.QUARTZ)
                     .strength(2.0f)
-                    .sound(SoundType.METAL)));
+                    .sound(SoundType.METAL)
+                    .noOcclusion()
+                    .requiresCorrectToolForDrops()));
 
     public static final Supplier<Block> COMMERCIAL_FIRE_ALARM_WALL = BLOCKS.register("commercial_fire_alarm_wall",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new CommercialFireAlarmWallBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.QUARTZ)
                     .strength(2.0f)
-                    .sound(SoundType.METAL)));
+                    .sound(SoundType.METAL)
+                    .noOcclusion()
+                    .requiresCorrectToolForDrops()));
 
     public static final Supplier<Block> FIRE_ALARM_PULL_STATION = BLOCKS.register("fire_alarm_pull_station",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new FireAlarmPullStationBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_RED)
                     .strength(3.0f)
-                    .sound(SoundType.METAL)));
+                    .sound(SoundType.METAL)
+                    .requiresCorrectToolForDrops()));
 
     public static final Supplier<Block> FIRE_ALARM_CONTROL_PANEL = BLOCKS.register("fire_alarm_control_panel",
             () -> new FireAlarmControlPanelBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.METAL)
                     .strength(4.0f)
-                    .sound(SoundType.METAL)));
+                    .sound(SoundType.METAL)
+                    .requiresCorrectToolForDrops()));
 
     public static final Supplier<Block> RESIDENTIAL_FIRE_PANEL = BLOCKS.register("residential_fire_panel",
             () -> new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.QUARTZ)
                     .strength(3.0f)
-                    .sound(SoundType.METAL)));
+                    .sound(SoundType.METAL)
+                    .requiresCorrectToolForDrops()));
 
     // Tornado Siren Blocks
     public static final Supplier<Block> TORNADO_SIREN = BLOCKS.register("tornado_siren",
-            () -> new Block(BlockBehaviour.Properties.of()
+            () -> new TornadoSirenBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.METAL)
                     .strength(5.0f)
-                    .sound(SoundType.METAL)));
+                    .sound(SoundType.METAL)
+                    .requiresCorrectToolForDrops()));
 
     public static final Supplier<Block> TORNADO_SIREN_CONTROL_PANEL = BLOCKS.register("tornado_siren_control_panel",
             () -> new TornadoSirenControlPanelBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.METAL)
                     .strength(4.0f)
-                    .sound(SoundType.METAL)));
+                    .sound(SoundType.METAL)
+                    .requiresCorrectToolForDrops()));
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);

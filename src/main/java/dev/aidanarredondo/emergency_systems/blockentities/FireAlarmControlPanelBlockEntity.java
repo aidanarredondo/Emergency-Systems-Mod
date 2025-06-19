@@ -2,7 +2,6 @@ package dev.aidanarredondo.emergency_systems.blockentities;
 
 import dev.aidanarredondo.emergency_systems.Config;
 import dev.aidanarredondo.emergency_systems.init.ModBlockEntities;
-import dev.aidanarredondo.emergency_systems.init.ModMenuTypes;
 import dev.aidanarredondo.emergency_systems.init.ModSounds;
 import dev.aidanarredondo.emergency_systems.menu.FireAlarmControlPanelMenu;
 import net.minecraft.core.BlockPos;
@@ -31,36 +30,36 @@ public class FireAlarmControlPanelBlockEntity extends BlockEntity implements Men
     private boolean isAlarmSilenced = false;
     private int tickCounter = 0;
     private final List<BlockPos> linkedDevices = new ArrayList<>();
-    
+
     public FireAlarmControlPanelBlockEntity(BlockPos pos, BlockState blockState) {
         super(ModBlockEntities.FIRE_ALARM_CONTROL_PANEL.get(), pos, blockState);
     }
 
     public void tick(Level level, BlockPos pos, BlockState state) {
         if (level.isClientSide()) return;
-        
+
         tickCounter++;
-        
+
         // Play panel beep when alarming and not silenced
         if (isAlarming && !isPanelSilenced && tickCounter % 60 == 0) {
-            level.playSound(null, pos, ModSounds.PANEL_BEEP.get(), 
+            level.playSound(null, pos, ModSounds.PANEL_BEEP.get(),
                     SoundSource.BLOCKS, 0.5f, 1.0f);
         }
     }
-    
+
     public void openGUI(ServerPlayer player) {
         if (!isPasswordSet && Config.requirePasswordForCommercial) {
             // First time setup - need to set password
-            player.sendSystemMessage(Component.literal("First time setup: Set your 4-digit password"));
+            player.displayClientMessage(Component.literal("First time setup: Set your 4-digit password"), false);
             // TODO: Open password setup GUI
         } else if (Config.requirePasswordForCommercial) {
             // TODO: Open password entry GUI
         } else {
             // Open main control panel
-            player.openMenu(this);
+            player.openMenu(this, buf -> buf.writeBlockPos(this.getBlockPos()));
         }
     }
-    
+
     public void setPassword(String newPassword) {
         if (newPassword.length() == 4 && newPassword.matches("\\d+")) {
             this.password = newPassword;
@@ -68,20 +67,20 @@ public class FireAlarmControlPanelBlockEntity extends BlockEntity implements Men
             setChanged();
         }
     }
-    
+
     public boolean checkPassword(String inputPassword) {
         return password.equals(inputPassword);
     }
-    
+
     public void panelAcknowledge() {
         isPanelSilenced = true;
         setChanged();
     }
-    
+
     public void alarmSilence() {
         isAlarmSilenced = true;
         setChanged();
-        
+
         // Silence all linked devices
         for (BlockPos devicePos : linkedDevices) {
             if (level != null) {
@@ -92,7 +91,7 @@ public class FireAlarmControlPanelBlockEntity extends BlockEntity implements Men
             }
         }
     }
-    
+
     public void testSystem() {
         // Trigger test on all linked devices
         for (BlockPos devicePos : linkedDevices) {
@@ -104,13 +103,13 @@ public class FireAlarmControlPanelBlockEntity extends BlockEntity implements Men
             }
         }
     }
-    
+
     public void resetSystem() {
         isAlarming = false;
         isPanelSilenced = false;
         isAlarmSilenced = false;
         setChanged();
-        
+
         // Reset all linked devices
         for (BlockPos devicePos : linkedDevices) {
             if (level != null) {
@@ -121,21 +120,21 @@ public class FireAlarmControlPanelBlockEntity extends BlockEntity implements Men
             }
         }
     }
-    
+
     public void triggerAlarm() {
         isAlarming = true;
         isPanelSilenced = false;
         isAlarmSilenced = false;
         setChanged();
     }
-    
+
     public void linkDevice(BlockPos pos) {
         if (!linkedDevices.contains(pos) && linkedDevices.size() < Config.maxLinkedDevices) {
             linkedDevices.add(pos);
             setChanged();
         }
     }
-    
+
     public void unlinkDevice(BlockPos pos) {
         linkedDevices.remove(pos);
         setChanged();
@@ -149,7 +148,7 @@ public class FireAlarmControlPanelBlockEntity extends BlockEntity implements Men
         tag.putBoolean("isAlarming", isAlarming);
         tag.putBoolean("isPanelSilenced", isPanelSilenced);
         tag.putBoolean("isAlarmSilenced", isAlarmSilenced);
-        
+
         // Save linked devices
         CompoundTag linkedTag = new CompoundTag();
         for (int i = 0; i < linkedDevices.size(); i++) {
@@ -163,20 +162,28 @@ public class FireAlarmControlPanelBlockEntity extends BlockEntity implements Men
     @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.loadAdditional(tag, registries);
-        password = tag.getString("password");
-        isPasswordSet = tag.getBoolean("isPasswordSet");
-        isAlarming = tag.getBoolean("isAlarming");
-        isPanelSilenced = tag.getBoolean("isPanelSilenced");
-        isAlarmSilenced = tag.getBoolean("isAlarmSilenced");
-        
+        password = tag.getString("password").orElse("");
+        isPasswordSet = tag.getBoolean("isPasswordSet").orElse(false);
+        isAlarming = tag.getBoolean("isAlarming").orElse(false);
+        isPanelSilenced = tag.getBoolean("isPanelSilenced").orElse(false);
+        isAlarmSilenced = tag.getBoolean("isAlarmSilenced").orElse(false);
+
         // Load linked devices
         linkedDevices.clear();
         if (tag.contains("linkedDevices")) {
-            CompoundTag linkedTag = tag.getCompound("linkedDevices");
-            int count = linkedTag.getInt("count");
+            CompoundTag linkedTag = tag.getCompound("linkedDevices").orElse(new CompoundTag());
+            int count = linkedTag.getInt("count").orElse(0);
             for (int i = 0; i < count; i++) {
-                long posLong = linkedTag.getLong("pos" + i);
-                linkedDevices.add(BlockPos.of(posLong));
+                if (linkedTag.contains("pos" + i)) {
+                    long posLong = linkedTag.getLong("pos" + i).orElse(0L);
+                    if (posLong != 0L) {
+                        // Manual conversion from long to BlockPos
+                        int x = (int) (posLong >> 38);
+                        int y = (int) (posLong << 52 >> 52);
+                        int z = (int) (posLong << 26 >> 38);
+                        linkedDevices.add(new BlockPos(x, y, z));
+                    }
+                }
             }
         }
     }
@@ -190,7 +197,7 @@ public class FireAlarmControlPanelBlockEntity extends BlockEntity implements Men
     public @Nullable AbstractContainerMenu createMenu(int containerId, Inventory playerInventory, Player player) {
         return new FireAlarmControlPanelMenu(containerId, playerInventory, this);
     }
-    
+
     // Getters for GUI
     public boolean isAlarming() { return isAlarming; }
     public boolean isPanelSilenced() { return isPanelSilenced; }

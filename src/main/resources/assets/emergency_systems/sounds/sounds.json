@@ -1,0 +1,123 @@
+{
+  "residential_fire_alarm": {
+    "subtitle": "emergency_systems.subtitle.residential_fire_alarm",
+    "sounds": [
+      {
+        "name": "emergency_systems:residential_fire_alarm",
+        "volume": 1.0,
+        "pitch": 1.0,
+        "attenuation_distance": 16
+      }
+    ]
+  },
+  "commercial_fire_alarm": {
+    "subtitle": "emergency_systems.subtitle.commercial_fire_alarm",
+    "sounds": [
+      {
+        "name": "emergency_systems:commercial_fire_alarm",
+        "volume": 1.2,
+        "pitch": 1.0,
+        "attenuation_distance": 24
+      }
+    ]
+  },
+  "fire_alarm_chirp": {
+    "subtitle": "emergency_systems.subtitle.fire_alarm_chirp",
+    "sounds": [
+      {
+        "name": "emergency_systems:fire_alarm_chirp",
+        "volume": 0.8,
+        "pitch": 1.0,
+        "attenuation_distance": 12
+      }
+    ]
+  },
+  "tornado_siren_alert": {
+    "subtitle": "emergency_systems.subtitle.tornado_siren_alert",
+    "sounds": [
+      {
+        "name": "emergency_systems:tornado_siren_alert",
+        "volume": 2.0,
+        "pitch": 1.0,
+        "attenuation_distance": 128
+      }
+    ]
+  },
+  "tornado_siren_raid": {
+    "subtitle": "emergency_systems.subtitle.tornado_siren_raid",
+    "sounds": [
+      {
+        "name": "emergency_systems:tornado_siren_raid",
+        "volume": 2.0,
+        "pitch": 1.0,
+        "attenuation_distance": 128
+      }
+    ]
+  },
+  "panel_beep": {
+    "subtitle": "emergency_systems.subtitle.panel_beep",
+    "sounds": [
+      {
+        "name": "emergency_systems:panel_beep",
+        "volume": 0.5,
+        "pitch": 1.0,
+        "attenuation_distance": 8
+      }
+    ]
+  },
+  "button_press": {
+    "subtitle": "emergency_systems.subtitle.button_press",
+    "sounds": [
+      {
+        "name": "emergency_systems:button_press",
+        "volume": 0.3,
+        "pitch": 1.0,
+        "attenuation_distance": 4
+      }
+    ]
+  },
+  "system_startup": {
+    "subtitle": "emergency_systems.subtitle.system_startup",
+    "sounds": [
+      {
+        "name": "emergency_systems:system_startup",
+        "volume": 0.8,
+        "pitch": 1.0,
+        "attenuation_distance": 10
+      }
+    ]
+  },
+  "system_shutdown": {
+    "subtitle": "emergency_systems.subtitle.system_shutdown",
+    "sounds": [
+      {
+        "name": "emergency_systems:system_shutdown",
+        "volume": 0.8,
+        "pitch": 1.0,
+        "attenuation_distance": 10
+      }
+    ]
+  },
+  "low_battery_chirp": {
+    "subtitle": "emergency_systems.subtitle.low_battery_chirp",
+    "sounds": [
+      {
+        "name": "emergency_systems:low_battery_chirp",
+        "volume": 0.6,
+        "pitch": 1.0,
+        "attenuation_distance": 8
+      }
+    ]
+  },
+  "pull_station_activate": {
+    "subtitle": "emergency_systems.subtitle.pull_station_activate",
+    "sounds": [
+      {
+        "name": "emergency_systems:pull_station_activate",
+        "volume": 1.0,
+        "pitch": 1.0,
+        "attenuation_distance": 12
+      }
+    ]
+  }
+}

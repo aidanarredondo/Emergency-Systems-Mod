@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [" I ", "SRS", "NHN"],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "S": {
+      "item": "minecraft:observer"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "N": {
+      "item": "minecraft:note_block"
+    },
+    "H": {
+      "item": "minecraft:horn_coral"
+    }
+  },
+  "result": {
+    "item": "emergency_systems:commercial_fire_alarm_ceiling",
+    "count": 1
+  }
+}

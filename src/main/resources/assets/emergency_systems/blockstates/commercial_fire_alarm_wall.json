@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "emergency_systems:block/commercial_fire_alarm_wall"
+    }
+  }
+}

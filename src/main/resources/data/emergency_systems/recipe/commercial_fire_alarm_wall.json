@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["IRI", "SNS", "IHI"],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "S": {
+      "item": "minecraft:observer"
+    },
+    "N": {
+      "item": "minecraft:note_block"
+    },
+    "H": {
+      "item": "minecraft:horn_coral"
+    }
+  },
+  "result": {
+    "item": "emergency_systems:commercial_fire_alarm_wall",
+    "count": 1
+  }
+}

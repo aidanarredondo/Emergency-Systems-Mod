@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["RRR", "RLR", "RIR"],
+  "key": {
+    "R": {
+      "item": "minecraft:red_concrete"
+    },
+    "L": {
+      "item": "minecraft:lever"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "emergency_systems:fire_alarm_pull_station",
+    "count": 1
+  }
+}

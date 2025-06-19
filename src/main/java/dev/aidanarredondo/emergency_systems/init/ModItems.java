@@ -39,7 +39,7 @@ public class ModItems {
 
     // Tools
     public static final Supplier<Item> DEVICE_LINKING_TOOL = ITEMS.register("device_linking_tool",
-            () -> new Item(new Item.Properties().stacksTo(1)));
+            () -> new dev.aidanarredondo.emergency_systems.items.DeviceLinkingToolItem(new Item.Properties().stacksTo(1)));
 
     public static final Supplier<Item> GOVERNMENT_KEY = ITEMS.register("government_key",
             () -> new Item(new Item.Properties().stacksTo(1)));

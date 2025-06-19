@@ -31,5 +31,17 @@
   "block.emergency_systems.residential_fire_panel": "Residential Fire Panel",
   "block.emergency_systems.tornado_siren": "Tornado Siren",
   "block.emergency_systems.tornado_siren_control_panel": "Tornado Siren Control Panel",
-  "block.emergency_systems.example_block": "Example Block"
+  "block.emergency_systems.example_block": "Example Block",
+
+  "emergency_systems.subtitle.residential_fire_alarm": "Residential Fire Alarm beeping",
+  "emergency_systems.subtitle.commercial_fire_alarm": "Commercial Fire Alarm sounding",
+  "emergency_systems.subtitle.fire_alarm_chirp": "Fire Alarm chirping",
+  "emergency_systems.subtitle.tornado_siren_alert": "Tornado Siren Alert",
+  "emergency_systems.subtitle.tornado_siren_raid": "Tornado Siren Raid",
+  "emergency_systems.subtitle.panel_beep": "Panel beeping",
+  "emergency_systems.subtitle.button_press": "Button pressed",
+  "emergency_systems.subtitle.system_startup": "System starting up",
+  "emergency_systems.subtitle.system_shutdown": "System shutting down",
+  "emergency_systems.subtitle.low_battery_chirp": "Low battery warning",
+  "emergency_systems.subtitle.pull_station_activate": "Pull station activated"
 }

@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["III", "CRC", "DSD"],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_block"
+    },
+    "C": {
+      "item": "minecraft:comparator"
+    },
+    "R": {
+      "item": "minecraft:diamond_block"
+    },
+    "D": {
+      "item": "minecraft:daylight_detector"
+    },
+    "S": {
+      "item": "minecraft:note_block"
+    }
+  },
+  "result": {
+    "item": "emergency_systems:tornado_siren_control_panel",
+    "count": 1
+  }
+}

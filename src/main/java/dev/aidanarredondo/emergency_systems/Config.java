@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 // An example config class. This is not required, but it's a good idea to have one to keep your config organized.
 // Demonstrates how to use Neo's config APIs
-@EventBusSubscriber(modid = Emergency_systems.MODID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = EmergencySystemsMod.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class Config {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
@@ -65,6 +65,49 @@ public class Config {
             .comment("Whether commercial fire alarm panels require a password")
             .define("requirePasswordForCommercial", true);
 
+    // ===== ADVANCED SECURITY OPTIONS =====
+    private static final ModConfigSpec.IntValue PASSWORD_ATTEMPTS = BUILDER
+            .comment("Maximum password attempts before lockout")
+            .defineInRange("passwordAttempts", 3, 1, 10);
+
+    // ===== SOUND SYSTEM OPTIONS =====
+    private static final ModConfigSpec.BooleanValue ENABLE_VOICE_ALERTS = BUILDER
+            .comment("Enable voice announcements for fire alarms")
+            .define("enableVoiceAlerts", true);
+
+    private static final ModConfigSpec.DoubleValue MASTER_VOLUME = BUILDER
+            .comment("Master volume for all emergency system sounds")
+            .defineInRange("masterVolume", 1.0, 0.0, 2.0);
+
+    private static final ModConfigSpec.ConfigValue<String> DEFAULT_ALARM_PATTERN = BUILDER
+            .comment("Default alarm pattern for fire alarms (TEMPORAL_3, TEMPORAL_4, CONTINUOUS, MARCH_TIME)")
+            .define("defaultAlarmPattern", "TEMPORAL_3");
+
+    private static final ModConfigSpec.ConfigValue<String> DEFAULT_SIREN_PATTERN = BUILDER
+            .comment("Default siren pattern for tornado sirens (ALERT, ATTACK, WAIL, YELP, RAID)")
+            .define("defaultSirenPattern", "ALERT");
+
+    // ===== SYSTEM MAINTENANCE OPTIONS =====
+    private static final ModConfigSpec.BooleanValue ENABLE_LOW_BATTERY_WARNING = BUILDER
+            .comment("Enable low battery warnings for battery-powered devices")
+            .define("enableLowBatteryWarning", true);
+
+    private static final ModConfigSpec.IntValue BATTERY_LIFE_HOURS = BUILDER
+            .comment("Battery life in hours for residential alarms")
+            .defineInRange("batteryLifeHours", 168, 24, 8760); // 1 week to 1 year
+
+    private static final ModConfigSpec.BooleanValue ENABLE_MAINTENANCE_MODE = BUILDER
+            .comment("Enable maintenance mode for testing systems")
+            .define("enableMaintenanceMode", true);
+
+    private static final ModConfigSpec.BooleanValue ENABLE_SYSTEM_ANNOUNCEMENTS = BUILDER
+            .comment("Enable system startup and shutdown announcements")
+            .define("enableSystemAnnouncements", true);
+
+    private static final ModConfigSpec.IntValue PULL_STATION_RESET_TIME = BUILDER
+            .comment("Time in seconds before pull stations can be manually reset")
+            .defineInRange("pullStationResetTime", 30, 10, 300);
+
     static final ModConfigSpec SPEC = BUILDER.build();
 
     // ===== ORIGINAL CONFIG VARIABLES =====
@@ -81,6 +124,18 @@ public class Config {
     public static boolean enableAlarmSounds;
     public static int maxLinkedDevices;
     public static boolean requirePasswordForCommercial;
+
+    // ===== ADVANCED CONFIG VARIABLES =====
+    public static int passwordAttempts;
+    public static boolean enableVoiceAlerts;
+    public static double masterVolume;
+    public static String defaultAlarmPattern;
+    public static String defaultSirenPattern;
+    public static boolean enableLowBatteryWarning;
+    public static int batteryLifeHours;
+    public static boolean enableMaintenanceMode;
+    public static boolean enableSystemAnnouncements;
+    public static int pullStationResetTime;
 
     private static boolean validateItemName(final Object obj) {
         return obj instanceof String itemName && BuiltInRegistries.ITEM.containsKey(ResourceLocation.parse(itemName));
@@ -106,5 +161,17 @@ public class Config {
         enableAlarmSounds = ENABLE_ALARM_SOUNDS.get();
         maxLinkedDevices = MAX_LINKED_DEVICES.get();
         requirePasswordForCommercial = REQUIRE_PASSWORD_FOR_COMMERCIAL.get();
+
+        // ===== ADVANCED CONFIG LOADING =====
+        passwordAttempts = PASSWORD_ATTEMPTS.get();
+        enableVoiceAlerts = ENABLE_VOICE_ALERTS.get();
+        masterVolume = MASTER_VOLUME.get();
+        defaultAlarmPattern = DEFAULT_ALARM_PATTERN.get();
+        defaultSirenPattern = DEFAULT_SIREN_PATTERN.get();
+        enableLowBatteryWarning = ENABLE_LOW_BATTERY_WARNING.get();
+        batteryLifeHours = BATTERY_LIFE_HOURS.get();
+        enableMaintenanceMode = ENABLE_MAINTENANCE_MODE.get();
+        enableSystemAnnouncements = ENABLE_SYSTEM_ANNOUNCEMENTS.get();
+        pullStationResetTime = PULL_STATION_RESET_TIME.get();
     }
 }

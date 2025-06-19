@@ -15,29 +15,29 @@ public class ModBlockEntities {
 
     public static final Supplier<BlockEntityType<ResidentialFireAlarmBlockEntity>> RESIDENTIAL_FIRE_ALARM =
             BLOCK_ENTITIES.register("residential_fire_alarm", () ->
-                    BlockEntityType.Builder.of(ResidentialFireAlarmBlockEntity::new,
-                            ModBlocks.RESIDENTIAL_FIRE_ALARM.get()).build(null));
+                    new BlockEntityType<>(ResidentialFireAlarmBlockEntity::new,
+                            java.util.Set.of(ModBlocks.RESIDENTIAL_FIRE_ALARM.get())));
 
     public static final Supplier<BlockEntityType<CommercialFireAlarmBlockEntity>> COMMERCIAL_FIRE_ALARM =
             BLOCK_ENTITIES.register("commercial_fire_alarm", () ->
-                    BlockEntityType.Builder.of(CommercialFireAlarmBlockEntity::new,
-                            ModBlocks.COMMERCIAL_FIRE_ALARM_CEILING.get(),
-                            ModBlocks.COMMERCIAL_FIRE_ALARM_WALL.get()).build(null));
+                    new BlockEntityType<>(CommercialFireAlarmBlockEntity::new,
+                            java.util.Set.of(ModBlocks.COMMERCIAL_FIRE_ALARM_CEILING.get(),
+                                    ModBlocks.COMMERCIAL_FIRE_ALARM_WALL.get())));
 
     public static final Supplier<BlockEntityType<FireAlarmControlPanelBlockEntity>> FIRE_ALARM_CONTROL_PANEL =
             BLOCK_ENTITIES.register("fire_alarm_control_panel", () ->
-                    BlockEntityType.Builder.of(FireAlarmControlPanelBlockEntity::new,
-                            ModBlocks.FIRE_ALARM_CONTROL_PANEL.get()).build(null));
+                    new BlockEntityType<>(FireAlarmControlPanelBlockEntity::new,
+                            java.util.Set.of(ModBlocks.FIRE_ALARM_CONTROL_PANEL.get())));
 
     public static final Supplier<BlockEntityType<TornadoSirenBlockEntity>> TORNADO_SIREN =
             BLOCK_ENTITIES.register("tornado_siren", () ->
-                    BlockEntityType.Builder.of(TornadoSirenBlockEntity::new,
-                            ModBlocks.TORNADO_SIREN.get()).build(null));
+                    new BlockEntityType<>(TornadoSirenBlockEntity::new,
+                            java.util.Set.of(ModBlocks.TORNADO_SIREN.get())));
 
     public static final Supplier<BlockEntityType<TornadoSirenControlPanelBlockEntity>> TORNADO_SIREN_CONTROL_PANEL =
             BLOCK_ENTITIES.register("tornado_siren_control_panel", () ->
-                    BlockEntityType.Builder.of(TornadoSirenControlPanelBlockEntity::new,
-                            ModBlocks.TORNADO_SIREN_CONTROL_PANEL.get()).build(null));
+                    new BlockEntityType<>(TornadoSirenControlPanelBlockEntity::new,
+                            java.util.Set.of(ModBlocks.TORNADO_SIREN_CONTROL_PANEL.get())));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
